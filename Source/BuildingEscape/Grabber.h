@@ -42,4 +42,6 @@ private:
 	void PhysicsHandleComponent();	
 	void SetupInputComponent();
 	const FHitResult GetFirstPhysicsBodyInReach();
+	FVector GetReachLineEnd();
+	FVector GetReachLineStart();
 };
