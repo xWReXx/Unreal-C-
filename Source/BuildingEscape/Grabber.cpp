@@ -38,7 +38,7 @@ void UGrabber::SetupInputComponent()
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Input Component Not Found!"));
+		UE_LOG(LogTemp, Error, TEXT("Input Component Not Found!"));
 	}
 }
 
@@ -48,6 +48,7 @@ void UGrabber::Grab() {
 	auto ComponentToGrab = HitResult.GetComponent();
 	auto ActorHit = HitResult.GetActor();
 
+	if (!PhysicsHandle) { return; }
 	if (ActorHit)
 	{
 		// attach physics handle
@@ -61,6 +62,7 @@ void UGrabber::Grab() {
 }
 
 void UGrabber::Release() {
+	if (!PhysicsHandle) { return; }
 	PhysicsHandle->ReleaseComponent();
 }
 
